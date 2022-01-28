@@ -122,8 +122,6 @@ class DiscordInstance {
 
 (async () => {
   const discordInstance = new DiscordInstance(MFA_TOKEN, GUILD_ID, CHANNEL_ID);
-  // await discordInstance.login();
-  console.log(discordInstance.token);
   await discordInstance.getMessages(MINER_ID); // 891752689036296201 CameronD
   await discordInstance.getStats();
 })();
