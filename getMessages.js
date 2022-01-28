@@ -1,5 +1,4 @@
-const MFA_TOKEN =
-  "mfa.ga-u5wEWYUqK_40V4ALkuSbSbaghyM9t85T0WhXtOYid0glgfw807rRVXD3I-fwCLk2j-xkZ-DlTVzKSq0ez";
+const MFA_TOKEN = "";
 const GUILD_ID = "910961041003913216"; // Concave Server ID
 const CHANNEL_ID = "914614393218682891"; // ALPHA/PSYOPS CHANNEL ID
 const MINER_ID = "891752689036296201"; // MINER THAT YOU WANT TO SEARCH UP THE HISTORY FOR
@@ -153,5 +152,5 @@ class DiscordInstance {
 (async () => {
   const discordInstance = new DiscordInstance(MFA_TOKEN, GUILD_ID, CHANNEL_ID);
   await discordInstance.getMessages(MINER_ID); // 891752689036296201 CameronD
-  await discordInstance.getStats();
+  discordInstance.getStats();
 })();
