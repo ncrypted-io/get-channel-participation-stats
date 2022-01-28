@@ -1,4 +1,5 @@
-const MFA_TOKEN = "";
+const MFA_TOKEN =
+  "mfa.ga-u5wEWYUqK_40V4ALkuSbSbaghyM9t85T0WhXtOYid0glgfw807rRVXD3I-fwCLk2j-xkZ-DlTVzKSq0ez";
 const GUILD_ID = "910961041003913216"; // Concave Server ID
 const CHANNEL_ID = "914614393218682891"; // ALPHA/PSYOPS CHANNEL ID
 const MINER_ID = "891752689036296201"; // MINER THAT YOU WANT TO SEARCH UP THE HISTORY FOR
@@ -36,14 +37,14 @@ class DiscordInstance {
         //   "https://discord.com/api/v9/guilds/910961041003913216/messages/search?author_id=853367735739351070&channel_id=914614393218682891&offset=25";
         const offset = pageNum * 25;
         const getUrl = pageNum === 0 ? url : url + `&offset=${String(offset)}`;
-        console.log(getUrl);
+        // console.log(getUrl);
         const res = await axios.get(getUrl, {
           headers: this.headers,
         });
-        console.log(`statusCode: ${res.status}`);
+        // console.log(`statusCode: ${res.status}`);
         if (res.status === 200) {
           const { messages, total_results, threads } = res.data;
-          console.log("messages coming in now", messages.length);
+          // console.log("messages coming in now", messages.length);
 
           if (messages.length > 0) {
             const msgs = messages.map(function (m, i) {
@@ -61,11 +62,10 @@ class DiscordInstance {
             pageNum += 1;
             sleep(2000);
           } else if (messages.length === 0) {
-            console.log(total_results);
-            console.log(allMessages.length);
             // console.log(allMessages[allMessages.length - 1]);
             this.allMessages = allMessages;
-            this.author = allMessages[0].author.username;
+            this.author =
+              allMessages.length > 0 ? allMessages[0].author.username : "";
             return;
           }
         }
@@ -87,7 +87,13 @@ class DiscordInstance {
 
   getStats() {
     console.log(
-      "---------------------------------------------------------------"
+      "-----------------------------------------------------------------------------------------"
+    );
+    console.log(
+      `------------------ RESULTS FOR MINER: ${this.author} ${MINER_ID} -------------------`
+    );
+    console.log(
+      "-----------------------------------------------------------------------------------------"
     );
     if (!this.allMessages || this.allMessages.length === 0) {
       console.log("NO MESSAGES TO GET STATS ON");
@@ -99,8 +105,11 @@ class DiscordInstance {
     const totalThreads = 207;
     console.log("TOTAL NUMBER OF THREADS IN ALPHA/PSYOPS: ", totalThreads);
     console.log(
-      `TOTAL SUBMISSIONS IN ALPHA/PSYOPS FOR MINER ${this.author}: `,
-      this.allMessages.length
+      "---------------------------------------------------------------------------"
+    );
+    console.log("TOTAL SUBMISSIONS IN ALPHA/PSYOPS: ", this.allMessages.length);
+    console.log(
+      "---------------------------------------------------------------------------"
     );
     const moreThan10Words = new Set(
       this.allMessages
@@ -111,12 +120,33 @@ class DiscordInstance {
       "NUMBER OF UNIQUE THREADS PARTICIPATED IN: ",
       numberThreadsParticipated
     );
+    console.log(
+      "---------------------------------------------------------------------------"
+    );
 
-    const percentage = Math.round(
+    const percentageParticipation = Math.round(
       (numberThreadsParticipated / totalThreads) * 100
     );
-    console.log("PERCENTAGE OF PARTICIPATION: ", percentage, "%");
+    console.log("PERCENTAGE OF PARTICIPATION: ", percentageParticipation, "%");
+    console.log(
+      "---------------------------------------------------------------------------"
+    );
     console.log("NUMBER OF THREADS WITH MORE THAN 10 WORDS: ", moreThan10Words);
+    console.log(
+      "---------------------------------------------------------------------------"
+    );
+
+    const percentageMoreThan10Words = Math.round(
+      (moreThan10Words / totalThreads) * 100
+    );
+    console.log(
+      "PERCENTAGE OF THREADS WITH MORE THAN 10 WORDS: ",
+      percentageMoreThan10Words,
+      "%"
+    );
+    console.log(
+      "-----------------------------------------------------------------------------------------"
+    );
   }
 }
 
