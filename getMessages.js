@@ -71,7 +71,17 @@ class DiscordInstance {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log(
+        "---------------------------------------------------------------"
+      );
+      console.log("ERROR");
+      console.log(error.response.data);
+      console.log(
+        "---------------------------------------------------------------"
+      );
+      console.log(
+        "PLEASE CHECK THAT YOUR TOKEN IS VALID OR MAKE SURE THAT YOU HAVE ACCESS TO THE ALPHA/PSYOPS CHANNEL"
+      );
     }
   }
 
@@ -79,6 +89,10 @@ class DiscordInstance {
     console.log(
       "---------------------------------------------------------------"
     );
+    if (!this.allMessages || this.allMessages.length === 0) {
+      console.log("NO MESSAGES TO GET STATS ON");
+      return;
+    }
     const numberThreadsParticipated = new Set(
       this.allMessages.map((m) => m.threadName)
     ).size;
