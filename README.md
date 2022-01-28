@@ -5,7 +5,7 @@
 ### REQUIREMENTS
 
 - [NodeJS](https://nodejs.org/en/download/) Version >= 14
-- `MFA_TOKEN` FROM THE NETWORK TAB AFTER AUTHENTICATING INTO DISCORD FROM THE BROWSER - CONTACT Ncrypted#2381 FOR MORE INFO. ![Token from the network tab after authenticating into discord via the browser](./mfa_token.png)
+- `MFA_TOKEN` FROM THE NETWORK TAB AFTER AUTHENTICATING INTO DISCORD FROM THE BROWSER - CONTACT Ncrypted#2381 FOR MORE INFO. ![Token from the network tab after authenticating into discord via the browser](images/mfa_token.png)
 - `GUILD_ID` - THE ID OF THE SERVER, CONCAVE'S IS `910961041003913216`
 - `CHANNEL_ID` - ALPHA/PYSOPS CHANNEL ID IS `914614393218682891`
 - `MINER_ID` - THE ID OF THE MINER THAT YOU WANT TO SEARCH THE HISTORY FOR
@@ -24,5 +24,9 @@
 - `npm install` to install the dependency for making API calls
 - replace the variables at the top of the script in the file `getMessages.js`
 - To run the script run: `npm run fetch`
+
+### SAMPLE RESULTS
+
+![RESULTS](images/results.png)
 
 CONTACT Ncrypted#2381 FOR MORE INFO OR QUESTIONS
