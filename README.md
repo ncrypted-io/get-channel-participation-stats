@@ -28,6 +28,6 @@
 
 ### SAMPLE RESULTS
 
-![RESULTS](images/results.png)
+![RESULTS](images/sample-results.png)
 
 CONTACT Ncrypted#2381 FOR MORE INFO OR QUESTIONS
