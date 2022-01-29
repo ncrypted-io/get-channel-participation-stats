@@ -85,6 +85,9 @@ class DiscordInstance {
   }
 
   getStats() {
+    if (!this.allMessages || this.allMessages.length === 0) {
+      return;
+    }
     console.log(
       "-----------------------------------------------------------------------------------------"
     );
@@ -94,10 +97,7 @@ class DiscordInstance {
     console.log(
       "-----------------------------------------------------------------------------------------"
     );
-    if (!this.allMessages || this.allMessages.length === 0) {
-      console.log("NO MESSAGES TO GET STATS ON");
-      return;
-    }
+
     const numberThreadsParticipated = new Set(
       this.allMessages.map((m) => m.threadName)
     ).size;
